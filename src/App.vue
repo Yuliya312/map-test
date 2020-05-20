@@ -14,7 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nav {
+/* #nav {
   padding: 30px;
 
   a {
@@ -25,5 +25,5 @@
       color: #42b983;
     }
   }
-}
+} */
 </style>

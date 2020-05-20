@@ -37,3 +37,20 @@
   }
 }
 
+.link {
+  display: inline-block;
+  color: $color-secondary;
+
+  &--small {
+    font-size: 14px;
+    line-height: 35px;
+    letter-spacing: 0.5;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  &--big {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
