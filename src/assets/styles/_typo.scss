@@ -1,0 +1,39 @@
+// @font-face {
+//   font-family: 'Suisse Intl';
+//   src: url('/src/assets/fonts/SuisseIntl-Light.woff2') format('woff2'),
+//   url('/src/assets/fonts/SuisseIntl-Light.woff') format('woff');
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Suisse Intl";
+//   src: url("/src/assets/fonts/SuisseIntl.woff2?v=1.101") format("woff2"),
+//     url("/src/assets/fonts/SuisseIntl.woff?v=1.101") format("woff");
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Suisse Intl';
+//   font-weight: 700;
+//   font-style: normal;
+//   src: url('/src/assets/fonts/SuisseIntl-SemiBold.woff2') format('woff2'),
+//   url('/src/assets/fonts/SuisseIntl-SemiBold.woff') format('woff');
+
+// }
+
+.title {
+  &__h1 {
+    font-size: 50px;
+    line-height: 48px;
+    font-weight: 300;
+  }
+
+  &__h2 {
+    font-size: 34px;
+    line-height: 48px;
+    font-weight: 300;
+  }
+}
+
