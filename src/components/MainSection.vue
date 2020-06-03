@@ -13,7 +13,7 @@
               <button
                 class="navigation__link"
                 :class="{ 'link--active': currentOffice.city === office.city }"
-                @click="getCurrent(office)"
+                @click="getCurrent(office, tab)"
               >
                 {{ office.city }}
               </button>
@@ -39,13 +39,31 @@
           </ul>
         </nav>
       </div>
-      <div class="offices__map"></div>
+      <div class="offices__map">
+        <GmapMap
+          :center="currentOffice.position"
+          :zoom="13"
+          map-type-id="terrain"
+          style="width: 500px; height: 500px"
+        >
+          <GmapCircle
+            :center="currentOffice.position"
+            :radius="150"
+            :visible="true"
+            :draggable="true"
+            :options="{ fillColor: '#3db565', fillOpacity: 1 }"
+          ></GmapCircle>
+        </GmapMap>
+      </div>
     </section>
   </main>
 </template>
 
 <script>
+import style from "@/assets/map/googleMapStyle.json";
+
 export default {
+  name: "main-section",
   data() {
     return {
       offices: [
@@ -54,28 +72,44 @@ export default {
           city: "Kyiv",
           address: "Stepan Bandera, 33",
           postIndex: "02066",
-          country: "Ukraine"
+          country: "Ukraine",
+          position: {
+            lat: 50.48981772,
+            lng: 30.49508572
+          }
         },
         {
           id: 2,
           city: "New York",
           address: "Loan Street, 58",
           postIndex: "33140",
-          country: "USA"
+          country: "USA",
+          position: {
+            lat: 40.7127753,
+            lng: -74.0059728
+          }
         },
         {
           id: 3,
           city: "Guangzhou",
           address: "Tian He Bei Road, 233",
           postIndex: "69854",
-          country: "China"
+          country: "China",
+          position: {
+            lat: 23.12911,
+            lng: 113.264385
+          }
         },
         {
           id: 4,
           city: "Barcelona",
           address: "Plaça Rosa Del Vents 1",
           postIndex: "12345",
-          country: "Spain"
+          country: "Spain",
+          position: {
+            lat: 41.38506389999999,
+            lng: 2.1734035
+          }
         }
       ],
       currentOffice: {
@@ -83,14 +117,29 @@ export default {
         id: 1,
         address: "Stepan Bandera, 33",
         postIndex: "02066",
-        country: "Ukkraine"
+        country: "Ukkraine",
+        position: {
+          lat: 50.48981772,
+          lng: 30.49508572
+        }
+      },
+      mapStyle: {
+        zoomControl: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
+        style
       }
     };
   },
   methods: {
-    getCurrent(office) {
+    getCurrent(office, tab) {
       this.currentOffice = office;
+      this.currentTab = tab;
     }
+  },
+  mounted() {
+    console.log(this.mapStyle);
   }
 };
 </script>
@@ -107,6 +156,7 @@ export default {
   padding: 0 0 0 60px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   &__info {
     max-width: 580px;
